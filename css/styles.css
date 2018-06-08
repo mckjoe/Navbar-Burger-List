@@ -7,19 +7,11 @@ body {
   font-family: 'sans-serif';
 }
 
-/* .content {
-  height: 200vh;
-  background-color: #333;
-  display: grid;
-  text-align: center;
-} */
-
 /* navigation styles start here */
 header {
   background-color: lightblue;
   text-align: center;
   position: fixed;
-  /* z-index: 999; */
   width: 100%;
 }
 
@@ -50,7 +42,7 @@ header {
   position: relative;
 }
 
-/* this will make top and bottom bars also show up */
+/* this will make top and bottom bars also show up in burger*/
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
   content: '';
@@ -96,9 +88,37 @@ nav a:hover {
   color: #000;
 }
 
-
-
 /* using tilda means preceeding sibling of nav-toggle  */
 .nav-toggle:checked ~ nav {
   display: block;
 }
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  .logo {
+    grid-column: 2 / 3;
+  }
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  nav ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+  nav li {
+    margin-left: 3em;
+    margin-bottom: 0;
+  }
+  nav a {
+    opacity: 1;
+  }
